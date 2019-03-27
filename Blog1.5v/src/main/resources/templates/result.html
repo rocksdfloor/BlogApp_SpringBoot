@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Blog On</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<center>
+	Now is:
+	<b th:text="${execInfo.now.time}">date and time</b><br><br>
+		<a href="/post">Submit another post</a> <a href="/">View all post</a>
+		<br>
+		<h1>New Post Created</h1>
+		<p th:text="'Title: ' + ${post.title}" />
+		<p th:text="'Body: ' + ${post.body}" />
+	</center>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Blog On</title>
+</head>
+<body>
+<h7 th:inline="text">Hello [[${#httpServletRequest.remoteUser}!=null?${#httpServletRequest.remoteUser}:Anonymous]]!</h7>
+<center>
+	Now is:
+	<b th:text="${execInfo.now.time}">date and time</b>
+	<!-- <br>
+    Model value <b th:text="${message}"></b>
+    <br>
+    Model value <b th:text="${allPost}"></b> -->
+	<br>
+	
+	<br> 
+	<a href="/post">Create New Post</a>
+	<br><br>
+	<a href="/registration">Registration</a>
+	<br><br>
+	 <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+	<br>
+	<main id="posts">
+	<table border=1>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Body</th>
+			<th>Edit</th>
+		</tr>
+		<article th:each="p : ${allPost}">
+		<tr>
+
+			<td><span th:utext="${p.title}"></span></td>
+			<td><span th:utext="${p.author!=null?p.author:'Anonymous'}"></span></td>
+			<td>
+				<p class="content" th:utext="${p.body}">Post content</p>
+			</td>
+			<td>
+				 <a th:href="@{/{id}(id=${p.id})}">Delete</a>
+				 <br>
+				 <a th:href="@{/updatePost/{id}(id=${p.id})}">Edit</a> 
+			</td>
+		</tr>
+		</article>
+	</table>
+
+	</main>
+</center>
+</body>
+</html>

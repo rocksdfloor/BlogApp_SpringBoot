@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog On</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<center>
+Now is:
+	<b th:text="${execInfo.now.time}">date and time</b><br><br>
+	<a href="/">View all post</a>
+    <form action="#" th:action="@{/updatePost}" th:object="${post}" method="post"> 
+		<p th:text="'Update Post for ID: ' + ${post.id}" />
+    	<br>
+    	<p>Title: <input type="text" th:field="*{title}" required /></p>
+    	<p>Body: <textarea th:field="*{body}" rows="4" cols="40" required></textarea></p>
+        <!-- <p>Body: <input type="text" th:field="*{body}" /></p> -->
+        <p><input type="submit" value="Submit" /> 
+        <input type="reset" value="Reset" /></p>
+    </form>
+</center>
+</body>
+</html>
